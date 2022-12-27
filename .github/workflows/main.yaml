@@ -40,7 +40,7 @@ jobs:
     name: Deployment
     needs:  build
     runs-on:  ubuntu-latest
-
+    if: github.ref == 'refs/heads/main' && needs.build.result == 'success'
     steps:
     - name: Download Production files
       uses: actions/download-artifact@v2
