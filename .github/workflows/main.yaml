@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    name: build
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     strategy:
@@ -39,7 +40,6 @@ jobs:
     name: Deployment
     needs:  build
     runs-on:  ubuntu-latest
-    if: github.refs == 'refs/heads/main'
 
     steps:
     - name: Download Production files
