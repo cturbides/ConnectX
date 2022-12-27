@@ -1,4 +1,4 @@
-name: Build and Deploy App
+name: Build and Deploy
 
 on:
   pull_request:
@@ -8,8 +8,8 @@ on:
       - main
 
 jobs:
-  build:
-    name: build
+  deploy:
+    name: Deployment to GH
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     strategy:
@@ -29,24 +29,6 @@ jobs:
     
     - name: Building
       run: npm run build
-
-    - name: Upload Production files
-      uses: actions/upload-artifact@v2
-      with:
-        name: production-files
-        path: ./build
-
-  deploy:
-    name: Deployment
-    needs:  build
-    runs-on:  ubuntu-latest
-    if: github.ref == 'refs/heads/main' && needs.build.result == 'success'
-    steps:
-    - name: Download Production files
-      uses: actions/download-artifact@v2
-      with:
-        name: production-files
-        path: ./build
 
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
