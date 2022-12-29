@@ -1,24 +1,17 @@
 import React from 'react';
+import { Routes, Route, HashRouter } from 'react-router-dom';
+import Home from './pages/Home';
 
-function App() {
+const App = (): JSX.Element => {
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<img className='App-logo' alt='logo' />
-				<p>
-          Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className='App-link'
-					href='https://reactjs.org'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-          Learn React
-				</a>
-			</header>
-		</div>
+		<HashRouter>
+			<Routes>
+				<Route path="/">
+					<Route index={true} element={<Home />} />
+				</Route>
+			</Routes>
+		</HashRouter>
 	);
-}
+};
 
 export default App;
