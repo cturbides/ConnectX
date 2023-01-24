@@ -8,6 +8,8 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 	const room = props.room;
 	const setRoom = props.setRoom;
 	const [newRoom, setNewRoom] = useState('');
+	
+	const buttonMessage = (!newRoom.length) ? 'Create room' : 'Continue'
 
 	const handleRoomID = (event: React.FormEvent<HTMLInputElement>) => {
 		const userRoomValue: string = event.currentTarget.value;
@@ -25,15 +27,20 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 	useEffect(() => setRoom(generateRandomRoomID()), []);
 
 	return (
-		<div>
+		<div className='h-screen flex items-center justify-center flex-col'>
 			<Title step="roomID" />
 			<form onSubmit={submit}>
-				<input 	type="text" name="roomID"  id="roomID"
+				<input 	className='text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
+						type="text" name="roomID"  id="roomID"
 						placeholder={room} value={newRoom}
-						onChange={handleRoomID}
-						maxLength={7}
+						onChange={handleRoomID} maxLength={7}
 				/>
-				<button type="submit">Continue</button>
+				<br />
+				<div className='text-center ml-auto mr-auto mb-11 font-ramabhadra text-lg'>
+					<button type="submit" className='cursor-pointer bg-main-black hover:bg-main-violet active:bg-main-violet text-main-white mt-5 p-2 w-64 rounded-xl lg:w-96 ease-in-out duration-300'>
+						{buttonMessage}
+					</button>
+				</div>
 			</form>
 		</div>
 	);
