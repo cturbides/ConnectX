@@ -1,12 +1,12 @@
 import React from 'react';
-import Logo from '../components/Home/Logo';
+import Logo from '../components/General/Logo';
+import Footer from '../components/General/Footer';
 import HeaderWrapper from '../components/Home/HeaderWrapper';
-import Footer from '../components/Home/Footer';
 
 const Home = (): JSX.Element => {
 	return (
 		<div className='flex h-screen min-h-screen items-center flex-col justify-center md:flex-row md:justify-start'>
-			<Logo />
+			<Logo isBig={true} isOriginal={true} />
 			<HeaderWrapper />
 			<Footer />
 		</div>
