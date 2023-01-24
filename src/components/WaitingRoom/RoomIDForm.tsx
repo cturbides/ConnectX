@@ -9,7 +9,7 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 	const setRoom = props.setRoom;
 	const [newRoom, setNewRoom] = useState('');
 	
-	const buttonMessage = (!newRoom.length) ? 'Create room' : 'Continue'
+	const buttonMessage = (!newRoom.length) ? 'Create room' : 'Continue';
 
 	const handleRoomID = (event: React.FormEvent<HTMLInputElement>) => {
 		const userRoomValue: string = event.currentTarget.value;
@@ -31,9 +31,9 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 			<Title step="roomID" />
 			<form onSubmit={submit}>
 				<input 	className='text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
-						type="text" name="roomID"  id="roomID"
-						placeholder={room} value={newRoom}
-						onChange={handleRoomID} maxLength={7}
+					type="text" name="roomID"  id="roomID"
+					placeholder={room} value={newRoom}
+					onChange={handleRoomID} maxLength={7}
 				/>
 				<br />
 				<div className='text-center ml-auto mr-auto mb-11 font-ramabhadra text-lg'>
