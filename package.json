@@ -20,7 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest --passWithNoTests",
-    "lint": "eslint . --fix --ext .ts,.tsx,.js",
+    "lint": "eslint . --fix --ext .ts,.tsx",
     "eject": "react-scripts eject"
   },
   "browserslist": {

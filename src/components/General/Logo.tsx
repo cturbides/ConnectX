@@ -30,7 +30,7 @@ const Logo = (props: LogoProps): JSX.Element => {
 	);
 
 	return  (isBig) ? bigOriginalLogo :
-			(original) ? smallOriginalLogo : smallWhiteLogo;
+		(original) ? smallOriginalLogo : smallWhiteLogo;
 };
 
 export default Logo;

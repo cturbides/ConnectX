@@ -21,7 +21,7 @@ const UsernameForm = (props: UsernameFormProps): JSX.Element => {
 			<Title step='username' />
 			<form onSubmit={submit} className=''>
 				<input  className='text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
-						autoFocus autoComplete='off' type="text" name="user" value={user} id="user" onChange={changeUser} maxLength={20}
+					autoFocus autoComplete='off' type="text" name="user" value={user} id="user" onChange={changeUser} maxLength={20}
 				/>
 				<br />
 				<div className='text-center ml-auto mr-auto mb-11 font-ramabhadra text-lg'>
