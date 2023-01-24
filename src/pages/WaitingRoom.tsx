@@ -6,7 +6,7 @@ import Footer from '../components/General/Footer';
 const WaitingRoom = (): JSX.Element => {
 	return (
 		<div>
-			<Logo />
+			<Logo isBig={false} isOriginal={true} />
 			<Form />
 			<Footer />
 		</div>
