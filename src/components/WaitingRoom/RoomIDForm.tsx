@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import Title from './Title';
 
 const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
-	const user = props.user;
+	// const user = props.user;
 	const room = props.room;
 	const setRoom = props.setRoom;
 	const [newRoom, setNewRoom] = useState('');
