@@ -5,7 +5,7 @@ import Footer from '../components/General/Footer';
 
 const WaitingRoom = (): JSX.Element => {
 	return (
-		<div className='min-h-screen w-screen'>
+		<div className='min-h-screen w-screen bg-main-white'>
 			<Logo isBig={false} isOriginal={true} />
 			<Form />
 			<Footer />
