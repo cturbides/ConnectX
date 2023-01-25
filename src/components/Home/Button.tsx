@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Button = (): JSX.Element => {
 	return (
@@ -10,7 +10,6 @@ const Button = (): JSX.Element => {
 					Begin now
 				</button>
 			</Link>
-			<Outlet />
 		</div>
 	);
 };

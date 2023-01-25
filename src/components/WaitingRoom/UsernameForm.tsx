@@ -16,12 +16,18 @@ const UsernameForm = (props: UsernameFormProps): JSX.Element => {
 		setUser(event.currentTarget.value);
 	};
 
+	const checkOverflow = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.value.length > 15)
+			event.target.value = event.target.value.slice(0, 15);
+	};
+
 	return (
 		<div className='h-screen min-h-screen flex items-center justify-center flex-col'>
 			<Title step='username' />
 			<form onSubmit={submit} className=''>
-				<input  className='text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
-					autoFocus autoComplete='off' type="text" name="user" value={user} id="user" onChange={changeUser} maxLength={20}
+				<input  className='bg-main-white text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
+					autoFocus type="text" name="user" value={user} id="user" onChange={changeUser} onInput={checkOverflow}
+					autoCorrect="off"  autoCapitalize="off" spellCheck="false" autoComplete='off'
 				/>
 				<br />
 				<div className='text-center ml-auto mr-auto mb-11 font-ramabhadra text-lg'>
