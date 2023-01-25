@@ -5,7 +5,7 @@ import HeaderWrapper from '../components/Home/HeaderWrapper';
 
 const Home = (): JSX.Element => {
 	return (
-		<div className='flex h-screen min-h-screen items-center flex-col justify-center md:flex-row md:justify-start'>
+		<div className='h-screen min-h-screen flex items-center flex-col justify-center md:flex-row md:justify-start bg-main-white'>
 			<Logo isBig={true} isOriginal={true} />
 			<HeaderWrapper />
 			<Footer />

@@ -35,7 +35,7 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 		<div className='h-screen flex items-center justify-center flex-col'>
 			<Title step="roomID" />
 			<form onSubmit={submit}>
-				<input 	className='text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
+				<input className='bg-main-white text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
 					type="text" name="roomID"  id="roomID"
 					placeholder={room} value={newRoom} onChange={handleRoomID} onInput={checkOverflow}
 					autoCorrect="off"  autoCapitalize="off" spellCheck="false" autoComplete='off'
