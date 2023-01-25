@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
 
 const Room = (): JSX.Element => {
 	// const location = useLocation();
