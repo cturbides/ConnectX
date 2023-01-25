@@ -25,7 +25,7 @@ const UsernameForm = (props: UsernameFormProps): JSX.Element => {
 		<div className='h-screen min-h-screen flex items-center justify-center flex-col'>
 			<Title step='username' />
 			<form onSubmit={submit} className=''>
-				<input  className='text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
+				<input  className='bg-main-white text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
 					autoFocus type="text" name="user" value={user} id="user" onChange={changeUser} onInput={checkOverflow}
 					autoCorrect="off"  autoCapitalize="off" spellCheck="false" autoComplete='off'
 				/>
