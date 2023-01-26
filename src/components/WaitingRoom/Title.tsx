@@ -8,7 +8,7 @@ const Title = (props: {step: WaitingRoomStep}): JSX.Element => {
 
 	const usernameElement: JSX.Element = (
 		<h1 className={titleStyle}>
-			<span className={normalStyle}>What&apos;s your</span> <span className={curlyStyle}>name</span><span className={normalStyle + ' ml-1'}>?</span>
+			<span className={normalStyle}>What&apos;s your</span> <span className={curlyStyle}>username</span><span className={normalStyle + ' ml-1'}>?</span>
 		</h1>
 	);
 
