@@ -1,4 +1,4 @@
-import { UsernameFormProps } from '../../utils/types';
+import { UsernameFormProps } from './WaitingRoom.props';
 import Title from './Title';
 import React from 'react';
 

@@ -1,10 +1,5 @@
 export type WaitingRoomStep = 'username' | 'roomID';
 
-export type LogoProps = {
-	isBig: 		boolean;
-	isOriginal: boolean;
-}
-
 export type UsernameFormProps = {
     user: string;
     setStep: React.Dispatch<React.SetStateAction<WaitingRoomStep>>;
