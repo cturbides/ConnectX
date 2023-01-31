@@ -1,8 +1,8 @@
+import { WaitingRoomStep } from './WaitingRoom.props';
 import { useState } from 'react';
-import { WaitingRoomStep } from '../../utils/types';
-import React from 'react';
-import RoomIDForm from './RoomIDForm';
 import UsernameForm from './UsernameForm';
+import RoomIDForm from './RoomIDForm';
+import React from 'react';
 
 const Form = (): JSX.Element => {
 	const [step, setStep] = useState<WaitingRoomStep>('username');
