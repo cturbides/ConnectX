@@ -16,14 +16,15 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 	const handleRoomID = (event: React.FormEvent<HTMLInputElement>) => {
 		const userRoomValue: string = event.currentTarget.value;
 
-		(userRoomValue.length == 4 && userRoomValue[3] != '-') ?
+		(userRoomValue.length >= 4 && userRoomValue[3] != '-') ?
 			setNewRoom(userRoomValue.substring(0, 3) + '-' + userRoomValue[3]) :
 			setNewRoom(event.currentTarget.value);
 	};
 
 	const checkOverflow = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.value.length > 7)
-			event.target.value = event.target.value.slice(0, 7);
+		const sevenAlphaValues = event.target.value.slice(0, 7);
+		const cleanAlphaValues = sevenAlphaValues.replace(/[^\w-]|_/g, '');
+		event.target.value = cleanAlphaValues;
 	};
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -54,7 +55,7 @@ const RoomIDForm = (props: RoomIDFormProps): JSX.Element => {
 			<form onSubmit={submit}>
 				<input className='bg-main-white text-center text-main-violet font-thin caret-black font-ranga focus:outline-none mb-2 text-7xl lg:text-8xl overflow-hidden'
 					type="text" name="roomID" id="roomID"
-					placeholder={room} value={newRoom} onChange={handleRoomID} onInput={checkOverflow}
+					placeholder={room} value={newRoom} onChange={handleRoomID} onInput={checkOverflow} pattern="[A-Za-z0-9]+"
 					autoCorrect="off" autoCapitalize="off" spellCheck="false" autoComplete='off'
 				/>
 				<br />
