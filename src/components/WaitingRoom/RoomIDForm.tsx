@@ -1,4 +1,4 @@
-import { generateRandomRoomID } from '../../utils/randomRoomID';
+import { generateRandomRoomID } from '../../helpers/randomRoomID';
 import { RoomIDFormProps } from '../../utils/types';
 import { useNavigate } from 'react-router';
 import React, { useEffect, useState } from 'react';
