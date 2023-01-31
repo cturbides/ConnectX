@@ -3,7 +3,7 @@ import React from 'react';
 
 const Room = (): JSX.Element => {
 	// const location = useLocation();
-	// const {username, roomID} = location.state;
+	// const {user, roomID} = location.state;
 
 	return (
 		<div className='bg-main-white min-h-screen h-screen w-screen flex items-center justify-center'>

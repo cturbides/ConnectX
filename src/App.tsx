@@ -1,8 +1,8 @@
 import { createHashRouter } from 'react-router-dom';
 import React from 'react';
-import Home from './pages/Home';
-import Room from './pages/Room';
-import WaitingRoom from './pages/WaitingRoom';
+import Home from './components/Home';
+import Room from './components/Room';
+import WaitingRoom from './components/WaitingRoom';
 
 const App = createHashRouter([
 	{
