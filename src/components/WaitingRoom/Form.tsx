@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { WaitingRoomStep } from '../../utils/types';
+import { WaitingRoomStep } from './WaitingRoom.props';
 import React from 'react';
 import RoomIDForm from './RoomIDForm';
 import UsernameForm from './UsernameForm';
