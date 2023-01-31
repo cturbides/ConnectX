@@ -1,7 +1,7 @@
 import React from 'react';
-import Logo from '../components/General/Logo';
-import Form from '../components/WaitingRoom/Form';
-import Footer from '../components/General/Footer';
+import Logo from '../General/Logo';
+import Form from './Form';
+import Footer from '../General/Footer';
 
 const WaitingRoom = (): JSX.Element => {
 	return (

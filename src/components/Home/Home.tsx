@@ -1,7 +1,7 @@
 import React from 'react';
-import Logo from '../components/General/Logo';
-import Footer from '../components/General/Footer';
-import HeaderWrapper from '../components/Home/HeaderWrapper';
+import Logo from '../General/Logo';
+import Footer from '..//General/Footer';
+import HeaderWrapper from './HeaderWrapper';
 
 const Home = (): JSX.Element => {
 	return (
