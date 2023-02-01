@@ -4,7 +4,7 @@ import main from '../../assets/connectx-logo-non-background.png';
 import white from '../../assets/connectx-white-logo-non-background.png';
 import React from 'react';
 
-const smallLogo = ({ original }: LogoProps): JSX.Element => {
+const SmallLogo = ({ original }: LogoProps): JSX.Element => {
 	return (
 		<Link to='/'>
 			<div className='fixed w-[70px] ml-5 mt-5 md:w-20 md:ml-10 md:mt-5'>
@@ -14,4 +14,4 @@ const smallLogo = ({ original }: LogoProps): JSX.Element => {
 	);
 };
 
-export default smallLogo;
+export default SmallLogo;
