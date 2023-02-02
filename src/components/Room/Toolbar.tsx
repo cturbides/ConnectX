@@ -12,8 +12,6 @@ const Toolbar = (): JSX.Element => {
 	const toggleMic = () => setMicIsActive(!micIsActive);
 	const toggleVideo = () => setVideoIsActive(!videoIsActive);
 	const toggleChat = () => setChatIsActive(!chatIsActive);
-
-	// TODO: Finish style and comment button
 	
 	const mic = {
 		active: faMicrophone,
@@ -53,11 +51,9 @@ const Toolbar = (): JSX.Element => {
 
 	return (
 		<div className='fixed flex w-screen justify-center items-end bottom-0 mb-9 z-50'>
-			
 			<Button {...mic} />
 			<Button {...video} />
-			<Button {...closeCall} />	
-			
+			<Button {...closeCall} />				
 			
 			<div className='absolute right-0 mr-10 invisible md:visible'>
 				<Button {...comment} />
