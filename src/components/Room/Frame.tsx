@@ -1,14 +1,17 @@
 import { FrameProps } from './Frame.props';
 import React from 'react';
 
-const Frame = ({ user }: FrameProps): JSX.Element => {
+const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element => {
+	const micActiveStyle = (micIsActive && !videoIsActive) ? 'border-main-violet' : '';
+	const videoActiveStyle = (videoIsActive) ? 'border-main-violet' : 'border-main-white';
+
 	return (
-		<div className='min-h-[50px] min-w-[250px] max-h-[230px] max-w-[400px] h-1/4 w-1/3 
-                      text-main-white border-[1px] border-main-white hover:border-main-violet active:border-main-violet border-solid rounded-lg'
+		<div className={`min-h-[170px] max-h-[290px] md:h-1/3 2xl:h-2/5 min-w-[250px] max-w-[600px] w-1/3 2xl:w-3/4
+                      border-[1px] ${videoActiveStyle} hover:border-main-violet active:border-main-violet border-solid rounded-lg`}
 		>
 			<div className='relative block h-full'>
-				<div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[100px] w-[100px]
-                                rounded-full border-main-white border-[1px] my-auto mx-auto text-center text-main-white font-ramabhadra text-6xl'
+				<div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[100px] w-[100px] ${micActiveStyle}
+                                rounded-full border-main-white border-[1px] my-auto mx-auto text-center text-main-white font-ramabhadra text-6xl`}
 				>
 					<h4 className='mt-[16px]'>{user.charAt(0)}</h4>
 				</div>
