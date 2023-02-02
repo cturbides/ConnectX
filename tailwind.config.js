@@ -10,6 +10,7 @@ module.exports = {
 				'main-white': '#F9F9F9',
 				'main-black': '#211A1D',
 				'main-violet':'#6936F5',
+				'main-red':   '#8E2B2B',
 			},
 			fontFamily: {
 				'ranga': ['Ranga', 'cursive'],
