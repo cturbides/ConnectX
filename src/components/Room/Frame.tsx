@@ -6,7 +6,7 @@ const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element =>
 	const videoActiveStyle = (videoIsActive) ? 'border-main-violet' : 'border-main-white';
 
 	return (
-		<div className={`min-h-[170px] max-h-[290px] md:h-1/3 2xl:h-2/5 min-w-[250px] max-w-[600px] w-1/3 2xl:w-3/4
+		<div className={`min-h-[170px] max-h-[290px] md:h-1/3 2xl:h-2/5 min-w-[250px] max-w-[400px] w-1/3 2xl:w-3/4
                       border-[1px] ${videoActiveStyle} hover:border-main-violet active:border-main-violet border-solid rounded-lg`}
 		>
 			<div className='relative block h-full'>
