@@ -14,7 +14,7 @@ const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element =>
 								${(videoIsActive) ? 'hidden' : ' '}
                                 rounded-full border-main-white border-[1px] my-auto mx-auto text-center text-main-white font-ramabhadra text-6xl`}
 				>
-					<h4 className='mt-[16px]'>{user.charAt(0)}</h4>
+					<h4 className='mt-[16px]'>{user.charAt(0).toUpperCase()}</h4>
 				</div>
 
 				<div className={`${(!videoIsActive) ? 'hidden' : 'w-full h-full'}`}>
