@@ -55,7 +55,7 @@ const Toolbar = (): JSX.Element => {
 			<Button {...video} />
 			<Button {...closeCall} />				
 			
-			<div className='absolute right-0 mr-10 invisible md:visible'>
+			<div className='absolute right-0 mr-10 invisible lg:visible'>
 				<Button {...comment} />
 			</div>
 		</div>
