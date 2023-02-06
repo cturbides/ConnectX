@@ -1,7 +1,6 @@
 import { faMicrophoneSlash, faMicrophone, faVideoSlash, faVideo, faPhoneSlash, faComment } from '@fortawesome/free-solid-svg-icons';
-import { ButtonProps } from './Button.props';
 import { useState } from 'react';
-import Button from './Button';
+import { Button, ButtonProps } from './Button';
 import React from 'react';
 
 const Toolbar = (): JSX.Element => {
@@ -55,7 +54,7 @@ const Toolbar = (): JSX.Element => {
 			<Button {...video} />
 			<Button {...closeCall} />				
 			
-			<div className='absolute right-0 mr-10 invisible lg:visible'>
+			<div className={`absolute right-0 mr-10 invisible lg:visible ${(chatIsActive) ? 'hidden' : ''}`}>
 				<Button {...comment} />
 			</div>
 		</div>
