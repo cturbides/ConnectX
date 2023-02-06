@@ -1,9 +1,13 @@
-import { CallInfoProps } from './CallInfo.props';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
-const CallInfo = ({ roomID, users }: CallInfoProps): JSX.Element => {
+export type CallInfoProps = {
+    roomID: string;
+    users:  number;
+};
+
+export const CallInfo = ({ roomID, users }: CallInfoProps): JSX.Element => {
 	return (
 		<div className='fixed flex mt-11 right-[38px] md:bottom-0 md:left-0 md:ml-10 md:mb-10'>
 			<h4 className="text-main-white text-base justify-center items-center">
@@ -16,5 +20,3 @@ const CallInfo = ({ roomID, users }: CallInfoProps): JSX.Element => {
 		</div>
 	);
 };
-
-export default CallInfo;
