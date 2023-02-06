@@ -1,9 +1,15 @@
 import { submit, handleUser, handleOverflow } from './UsernameForm.handlers';
-import { UsernameFormProps } from './WaitingRoom.props';
+import { WaitingRoomStep } from './WaitingRoom';
 import Title from './Title';
 import React from 'react';
 
-const UsernameForm = ({user, setStep, setUser}: UsernameFormProps): JSX.Element => {
+export type UsernameFormProps = {
+    user: string;
+    setStep: React.Dispatch<React.SetStateAction<WaitingRoomStep>>;
+    setUser: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const UsernameForm = ({user, setStep, setUser}: UsernameFormProps): JSX.Element => {
 	return (
 		<div className='h-screen min-h-screen flex items-center justify-center flex-col'>
 			<Title step='username' />
@@ -35,5 +41,3 @@ const UsernameForm = ({user, setStep, setUser}: UsernameFormProps): JSX.Element 
 		</div>
 	);
 };
-
-export default UsernameForm;

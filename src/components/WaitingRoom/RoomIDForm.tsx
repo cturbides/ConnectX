@@ -1,9 +1,14 @@
 import { handleRoom, handleCharacters, submit } from './RoomIDForm.handlers';
 import React, { useEffect, useState } from 'react';
 import { generateRandomRoomID } from '../../helpers/randomRoomID';
-import { RoomIDFormProps } from './WaitingRoom.props';
 import { useNavigate } from 'react-router';
 import Title from './Title';
+
+export type RoomIDFormProps = {
+    room: string;
+    user: string;
+    setRoom: React.Dispatch<React.SetStateAction<string>>;
+};
 
 const RoomIDForm = ({ 
 	user, 

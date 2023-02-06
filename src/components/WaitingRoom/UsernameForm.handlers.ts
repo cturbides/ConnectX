@@ -1,4 +1,4 @@
-import { WaitingRoomStep } from './WaitingRoom.props';
+import { WaitingRoomStep } from './WaitingRoom';
 
 export const submit = (
 	event: React.FormEvent<HTMLFormElement>,

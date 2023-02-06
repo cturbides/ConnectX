@@ -1,9 +1,13 @@
-import { UsersFrameProps } from './UsersFrame.props';
 import { useState, useEffect } from 'react';
-import Frame from './Frame';
+import { Frame } from './Frame';
 import React from 'react';
 
-const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
+export type UsersFrameProps = {
+    users: Array<string>;
+};
+
+
+export const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
 	const [ usersToShow, setUsersToShow ] = useState<string[]>([]);
 
 	useEffect(() => {
@@ -27,5 +31,3 @@ const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
 		</div>
 	);
 };
-
-export default UsersFrame;

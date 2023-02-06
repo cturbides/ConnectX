@@ -3,6 +3,8 @@ import React from 'react';
 import Footer from '../General/Footer';
 import SmallLogo from '../General/SmallLogo';
 
+export type WaitingRoomStep = 'username' | 'roomID';
+
 const WaitingRoom = (): JSX.Element => {
 	return (
 		<div className='min-h-screen w-screen bg-main-white'>
