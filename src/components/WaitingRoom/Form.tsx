@@ -1,6 +1,6 @@
-import { WaitingRoomStep } from './WaitingRoom.props';
+import { WaitingRoomStep } from './WaitingRoom';
+import { UsernameForm } from './UsernameForm';
 import { useState } from 'react';
-import UsernameForm from './UsernameForm';
 import RoomIDForm from './RoomIDForm';
 import React from 'react';
 
