@@ -1,4 +1,4 @@
-import { WaitingRoomStep } from './WaitingRoom.props';
+import { WaitingRoomStep } from './WaitingRoom';
 import React from 'react';
 
 const Title = (props: { step: WaitingRoomStep }): JSX.Element => {
