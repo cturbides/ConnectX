@@ -1,7 +1,12 @@
-import { FrameProps } from './Frame.props';
 import React from 'react';
 
-const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element => {
+export type FrameProps = {
+    user: string;
+    micIsActive: boolean;
+    videoIsActive: boolean;
+}
+
+export const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element => {
 	const micActiveStyle = (micIsActive && !videoIsActive) ? 'border-main-violet' : '';
 	const videoActiveStyle = (videoIsActive) ? 'border-main-violet' : 'border-main-white';
 
@@ -28,5 +33,3 @@ const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element =>
 		</div>
 	);
 };
-
-export default Frame;
