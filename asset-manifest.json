@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ConnectX/static/css/main.11102b70.css",
-    "main.js": "/ConnectX/static/js/main.d9c3b1c6.js",
+    "main.css": "/ConnectX/static/css/main.13fcf118.css",
+    "main.js": "/ConnectX/static/js/main.6ef48e6c.js",
     "static/media/connectx-logo-non-background.png": "/ConnectX/static/media/connectx-logo-non-background.790d4de0e702a45c840b.png",
     "static/media/connectx-white-logo-non-background.png": "/ConnectX/static/media/connectx-white-logo-non-background.99c133ccc1ac3b06f265.png",
     "index.html": "/ConnectX/index.html",
-    "main.11102b70.css.map": "/ConnectX/static/css/main.11102b70.css.map",
-    "main.d9c3b1c6.js.map": "/ConnectX/static/js/main.d9c3b1c6.js.map"
+    "main.13fcf118.css.map": "/ConnectX/static/css/main.13fcf118.css.map",
+    "main.6ef48e6c.js.map": "/ConnectX/static/js/main.6ef48e6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.11102b70.css",
-    "static/js/main.d9c3b1c6.js"
+    "static/css/main.13fcf118.css",
+    "static/js/main.6ef48e6c.js"
   ]
 }
