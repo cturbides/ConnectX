@@ -25,7 +25,7 @@ const InputMessage = (): JSX.Element => {
 						className='pb-[3px] pr-[3px] w-[250px] bg-transparent text-main-white text-[14px] font-ramabhadra outline-none placeholder:text-gray-500' 
 					/>
 					<button type='submit' className='cursor-pointer'>
-						<FontAwesomeIcon icon={faPaperPlane} className='text-main-white' />
+						<FontAwesomeIcon icon={faPaperPlane} className='text-main-white hover:text-main-violet focus:text-main-violet ease-in-out duration-300' />
 					</button>
 				</form>
 			</div>
