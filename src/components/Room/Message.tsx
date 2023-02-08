@@ -1,11 +1,11 @@
 import React from 'react';
 
 type MessageProps = {
-    message: string;
+    content: string;
     user: 'me' | string;   // TODO: Change user type
 };
 
-const Message = ({ message, user}: MessageProps): JSX.Element => {
+const Message = ({ content, user}: MessageProps): JSX.Element => {
 	const upperNameFirstLetter = user.charAt(0).toUpperCase();
 	
 	const userCircle: JSX.Element = (
@@ -25,7 +25,7 @@ const Message = ({ message, user}: MessageProps): JSX.Element => {
 						<h2 className={`${user == 'me' ? 'text-right pr-[25px]' : ''}`}>{user}</h2>
 					</div>
 					<div id='content' className={`text-justify text-sm ${(user == 'me') ? 'pr-[25px] pl-[40px]' : 'pr-[25px]'}`}>
-						<p>{message}</p>
+						<p>{content}</p>
 					</div>
 				</div>
 			</div>

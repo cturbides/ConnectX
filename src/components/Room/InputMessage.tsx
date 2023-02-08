@@ -1,10 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const InputMessage = (): JSX.Element => {
-	const [message, setMessage] = useState<string>('');
+interface Props {
+	message: string;
+	setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const InputMessage = ({ message, setMessage }: Props): JSX.Element => {
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
