@@ -12,7 +12,7 @@ const Room = (): JSX.Element => {
 
 	return (
 		<div className='min-h-screen h-screen w-screen flex bg-black'>
-			<SmallLogo original={false} />	
+			<SmallLogo original={false} applyToggle={true} />	
 			<CallInfo roomID={roomID} users={1}  />
 			<UsersFrame users={[user, 'Daniel', 'can34r', 'Laura']} />
 			<Chat />
