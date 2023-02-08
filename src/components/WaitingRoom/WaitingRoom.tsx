@@ -8,7 +8,7 @@ export type WaitingRoomStep = 'username' | 'roomID';
 const WaitingRoom = (): JSX.Element => {
 	return (
 		<div className='min-h-screen w-screen bg-main-white'>
-			<SmallLogo original={true} />
+			<SmallLogo original={true} applyToggle={false} />
 			<Form />
 			<Footer />
 		</div>
