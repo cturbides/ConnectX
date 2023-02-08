@@ -12,7 +12,7 @@ const Chat = (): JSX.Element => {
 					<h1 className='text-main-white text-2xl font-ramabhadra ml-[28px] mt-[17px]'>Messages</h1>
 					<div className='absolute top-0 right-0 mt-[6px] mr-[25px]'>
 						<button>
-							<FontAwesomeIcon icon={faXmark} className='text-main-white w-[25px] h-[25px]' />
+							<FontAwesomeIcon icon={faXmark} className='text-main-white w-[25px] h-[25px] ease-in-out duration-300 hover:text-main-violet focus:text-main-violet' />
 						</button>
 					</div>
 				</div>
