@@ -1,10 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const InputMessage = (): JSX.Element => {
-	const [message, setMessage] = useState<string>('');
+interface Props {
+	message: string;
+	setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const InputMessage = ({ message, setMessage }: Props): JSX.Element => {
 
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -25,7 +28,7 @@ const InputMessage = (): JSX.Element => {
 						className='pb-[3px] pr-[3px] w-[250px] bg-transparent text-main-white text-[14px] font-ramabhadra outline-none placeholder:text-gray-500' 
 					/>
 					<button type='submit' className='cursor-pointer'>
-						<FontAwesomeIcon icon={faPaperPlane} className='text-main-white' />
+						<FontAwesomeIcon icon={faPaperPlane} className='text-main-white hover:text-main-violet focus:text-main-violet ease-in-out duration-300' />
 					</button>
 				</form>
 			</div>
