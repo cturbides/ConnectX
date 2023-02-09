@@ -3,9 +3,8 @@ import { Frame } from './Frame';
 import React from 'react';
 
 export type UsersFrameProps = {
-    users: Array<string>;
+    users: Array<string>; // Change type
 };
-
 
 export const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
 	const [ usersToShow, setUsersToShow ] = useState<string[]>([]);
