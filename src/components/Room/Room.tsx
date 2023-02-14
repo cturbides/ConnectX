@@ -27,12 +27,20 @@ const Room = (): JSX.Element => {
 		setChatState
 	};
 
+	const chatStates = {
+		chatState,
+		messages,
+		message,
+		setChatState,
+		setMessage,
+	};
+
 	return (
 		<div className='min-h-screen h-screen w-screen flex bg-black'>
 			<SmallLogo original={false} applyToggle={true} />	
 			<CallInfo roomID={roomID} users={users.length}  />
 			<UsersFrame users={users} />
-			<Chat messages={messages} message={message} setMessage={setMessage} />
+			<Chat {...chatStates}/>
 			<Toolbar {...toolbarStates} />
 		</div>
 	);
