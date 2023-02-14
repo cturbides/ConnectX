@@ -17,6 +17,8 @@ const Room = (): JSX.Element => {
 	const [videoState, setVideoState] 	= useState<boolean>(false);
 	const [micState, setMicState] 		= useState<boolean>(false);
 	const [chatState, setChatState] 	= useState<boolean>(false);
+	// eslint-disable-next-line
+	const [online, setOnline] 			= useState<boolean>(false);
 
 	const toolbarStates = {
 		videoState,
@@ -35,10 +37,16 @@ const Room = (): JSX.Element => {
 		setMessage,
 	};
 
+	const callInfoStates = {
+		online,
+		roomID,
+		users: users.length
+	};
+
 	return (
 		<div className='min-h-screen h-screen w-screen flex bg-black'>
 			<SmallLogo original={false} applyToggle={true} />	
-			<CallInfo roomID={roomID} users={users.length}  />
+			<CallInfo {...callInfoStates} />
 			<UsersFrame users={users} />
 			<Chat {...chatStates}/>
 			<Toolbar {...toolbarStates} />
