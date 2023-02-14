@@ -25,7 +25,7 @@ export const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
 	}, [users, usersToShow]);
 
 	return (
-		<div className='text-main-white w-screen h-[700px] md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden'>
+		<div className='text-main-white w-screen h-full transition-all duration-300 md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden'>
 			{usersToShow.map((user, index) => <Frame user={user} micIsActive={false /**user.getMicrophoneState() */} videoIsActive={false /**user.getCameraState() */} key={index} />)}
 		</div>
 	);
