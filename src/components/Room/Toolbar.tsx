@@ -56,7 +56,7 @@ const Toolbar = ({ micState, videoState, chatState, setMicState, setVideoState, 
 			<Button {...video} />
 			<Button {...closeCall} />				
 			
-			<div className={`absolute right-0 mr-10 invisible lg:visible ${(chatState) ? 'hidden' : ''}`}>
+			<div className={`absolute right-0 mr-10 invisible xl:visible ${(chatState) ? 'hidden' : ''}`}>
 				<Button {...comment} />
 			</div>
 		</div>
