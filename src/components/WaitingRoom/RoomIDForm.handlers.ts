@@ -30,7 +30,7 @@ export const submit = (
 
 	const roomID 	= (!newRoom.length) ? room : newRoom;
 	const roomState = {
-		state: { user, roomID },
+		state: { username: user, roomID },
 	};
 
 	return (!newRoom.length || newRoom.length == 7)
