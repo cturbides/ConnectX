@@ -3,7 +3,6 @@ export class Media {
 
 	constructor(media: MediaStream) {
 		this.data = media;
-		this.getDevices();
 	}
 
 	async getDevices() {
