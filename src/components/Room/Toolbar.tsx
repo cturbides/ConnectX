@@ -1,35 +1,32 @@
 import { faMicrophoneSlash, faMicrophone, faVideoSlash, faVideo, faPhoneSlash, faComment } from '@fortawesome/free-solid-svg-icons';
 import { Button, ButtonProps } from './Button';
+import { User } from '../../classes/User';
 import React from 'react';
 
 interface Props {
-	micState: 	boolean;
-	videoState:	boolean;
+	user: User;
 	chatState:	boolean;
-
-	setMicState: 	React.Dispatch<React.SetStateAction<boolean>>;
-	setVideoState: 	React.Dispatch<React.SetStateAction<boolean>>;
 	setChatState: 	React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Toolbar = ({ micState, videoState, chatState, setMicState, setVideoState, setChatState }: Props): JSX.Element => {
+const Toolbar = ({ user, chatState, setChatState }: Props): JSX.Element => {
 
 	const mic = {
 		active: faMicrophone,
 		unable: faMicrophoneSlash,
-		isActive: micState,
+		isActive: user.micState,
 		activeColor: 'text-main-violet',
 		unableColor: 'text-main-white',
-		procedure: () => setMicState(!micState),
+		procedure: () => {(user.micState) ? user.stopAudio() : user.startAudio();},
 	} as ButtonProps;
 
 	const video = {
 		active: faVideo,
 		unable: faVideoSlash,
-		isActive: videoState,
+		isActive: user.videoState,
 		activeColor: 'text-main-violet',
 		unableColor: 'text-main-white',
-		procedure: () => setVideoState(!videoState),
+		procedure: () => {(user.videoState) ? user.stopVideo() : user.startVideo();},
 	} as ButtonProps;
 	
 	const comment = {

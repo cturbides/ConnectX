@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Frame } from './Frame';
+import { User } from '../../classes/User';
 import React from 'react';
 
 export type UsersFrameProps = {
-    users: Array<string>; // Change type
+    users: Array<User>;
 };
 
 export const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
-	const [ usersToShow, setUsersToShow ] = useState<string[]>([]);
+	const [ usersToShow, setUsersToShow ] = useState<User[]>([]);
 
 	useEffect(() => {
 		(window.innerWidth <= 760) ? setUsersToShow([...users].slice(0,3)) : setUsersToShow([...users]);
@@ -26,7 +27,7 @@ export const UsersFrame = ({ users }: UsersFrameProps): JSX.Element => {
 
 	return (
 		<div className='text-main-white w-screen h-full transition-all duration-300 md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden'>
-			{usersToShow.map((user, index) => <Frame user={user} micIsActive={false /**user.getMicrophoneState() */} videoIsActive={false /**user.getCameraState() */} key={index} />)}
+			{usersToShow.map((user, index) => <Frame user={user} key={index} />)}
 		</div>
 	);
 };
