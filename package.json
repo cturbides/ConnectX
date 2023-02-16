@@ -47,6 +47,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
+    "agora-rtc-sdk-ng": "^4.16.1",
     "agora-rtm-sdk": "^1.6.0-205",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.30.0",
