@@ -8,9 +8,9 @@ import Chat from './Chat';
 
 
 const Room = (): JSX.Element => {
-	const { user, roomID } = useLocation().state;
+	const { username, roomID } = useLocation().state;
 	// eslint-disable-next-line
-	const [users, setUsers] 			= useState<string[]>([user]); // Change user-type
+	const [users, setUsers] 			= useState<string[]>([username]); // Change user-type
 	// eslint-disable-next-line
 	const [messages, _setMessages] 		= useState<string[]>([]);
 	const [message, setMessage] 		= useState<string>('');

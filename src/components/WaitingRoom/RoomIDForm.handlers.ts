@@ -22,7 +22,7 @@ export const handleCharacters = (event: React.ChangeEvent<HTMLInputElement>) => 
 export const submit = (
 	event: React.FormEvent<HTMLFormElement>,
 	room: string,
-	user: string,
+	username: string,
 	newRoom: string,
 	navigate: NavigateFunction,
 ) => {
@@ -30,7 +30,7 @@ export const submit = (
 
 	const roomID 	= (!newRoom.length) ? room : newRoom;
 	const roomState = {
-		state: { user, roomID },
+		state: { username, roomID },
 	};
 
 	return (!newRoom.length || newRoom.length == 7)
