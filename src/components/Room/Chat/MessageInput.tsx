@@ -2,13 +2,12 @@ import React from 'react';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface Props {
+interface MessageInputProps {
 	message: string;
 	setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const InputMessage = ({ message, setMessage }: Props): JSX.Element => {
-
+export const MessageInput = ({ message, setMessage }: MessageInputProps): JSX.Element => {
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 	};
@@ -35,5 +34,3 @@ const InputMessage = ({ message, setMessage }: Props): JSX.Element => {
 		</div>
 	);
 };
-
-export default InputMessage;
