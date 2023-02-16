@@ -8,7 +8,7 @@ export type FrameProps = {
 
 export const Frame = ({ user, micIsActive, videoIsActive }: FrameProps): JSX.Element => {
 	const micActiveStyle = (micIsActive && !videoIsActive) ? 'border-main-violet' : '';
-	const videoActiveStyle = (videoIsActive) ? 'border-main-violet' : 'border-main-white';
+	const videoActiveStyle = (videoIsActive && micIsActive) ? 'border-main-violet' : 'border-main-white';
 
 	return (
 		<div className={`min-h-[170px] max-h-[290px] md:h-1/3 2xl:h-2/5 min-w-[250px] max-w-[400px] w-1/3 2xl:w-3/4
