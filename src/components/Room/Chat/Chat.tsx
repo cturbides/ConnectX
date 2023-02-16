@@ -1,19 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import InputMessage from './InputMessage';
-import Message from './Message';
+import { MessageInput } from './MessageInput';
+import { Message } from './Message';
 import React from 'react';
 
-interface Props {
+interface ChatProps {
 	messages: string[];
 	message: string;
 	chatState: boolean;
 	setMessage: React.Dispatch<React.SetStateAction<string>>;
 	setChatState: React.Dispatch<React.SetStateAction<boolean>>;
-	
 }
 
-const Chat = ({ messages, message, chatState, setMessage, setChatState }: Props): JSX.Element => {
+const Chat = ({ messages, message, chatState, setMessage, setChatState }: ChatProps): JSX.Element => {
 	return (
 		<div className={`h-screen transition-all duration-300 ${(!chatState) ? 'w-0' : 'w-1/2'}`}>
 			<div className={`relative h-5/6 max-w-[350px] w-5/6 xl:w-full border-main-white border-[1px] rounded-[15px] mr-[43px] mt-[71px] ml-auto transition-all duration-300
@@ -29,10 +28,10 @@ const Chat = ({ messages, message, chatState, setMessage, setChatState }: Props)
 				</div>
 				
 				<div id='messages' className='mt-[12px] h-[85%] w-full overflow-y-scroll'>
-					{messages.map((message, index) => <Message content={message} user='change-user' key={index} />)}
+					{messages.map((message, index) => <Message username={'Change-me'} content={message} key={index} />)}
 				</div>
 
-				<InputMessage message={message} setMessage={setMessage} />
+				<MessageInput message={message} setMessage={setMessage} />
 			</div>
 		</div>
 	);
