@@ -15,8 +15,7 @@ interface ChatProps {
 const Chat = ({ messages, message, chatState, setMessage, setChatState }: ChatProps): JSX.Element => {
 	return (
 		<div className={`h-screen transition-all duration-300 ${(!chatState) ? 'w-0' : 'w-1/2'}`}>
-			<div className={`relative h-5/6 max-w-[350px] w-5/6 xl:w-full border-main-white border-[1px] rounded-[15px] mr-[43px] mt-[71px] ml-auto transition-all duration-300
-							${(chatState) ? 'translate-x-0' : 'translate-x-[100vw]'}`}>
+			<div className={`relative h-5/6 max-w-[350px] w-5/6 xl:w-full border-main-white border-[1px] rounded-[15px] mr-[43px] mt-[71px] ml-auto transition-all duration-300 ${(chatState) ? 'translate-x-0' : 'translate-x-[100vw]'}`}>
 
 				<div className='relative w-full'>
 					<h1 className='text-main-white text-2xl font-ramabhadra ml-[28px] mt-[17px]'>Messages</h1>
