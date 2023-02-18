@@ -22,15 +22,21 @@ export const handleCharacters = (event: React.ChangeEvent<HTMLInputElement>) => 
 export const submit = (
 	event: React.FormEvent<HTMLFormElement>,
 	room: string,
-	user: string,
+	username: string,
 	newRoom: string,
 	navigate: NavigateFunction,
 ) => {
 	event.preventDefault();
 
+	const UID = localStorage.getItem('UID') || Math.floor(Math.random()*1000).toString();
+	
+	if (!localStorage.getItem('UID')) {
+		localStorage.setItem('UID', UID);
+	}
+
 	const roomID 	= (!newRoom.length) ? room : newRoom;
 	const roomState = {
-		state: { user, roomID },
+		state: { username, roomID, UID },
 	};
 
 	return (!newRoom.length || newRoom.length == 7)
