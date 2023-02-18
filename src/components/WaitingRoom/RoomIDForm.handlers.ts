@@ -28,15 +28,9 @@ export const submit = (
 ) => {
 	event.preventDefault();
 
-	const UID = localStorage.getItem('UID') || Math.floor(Math.random()*1000).toString();
-	
-	if (!localStorage.getItem('UID')) {
-		localStorage.setItem('UID', UID);
-	}
-
 	const roomID 	= (!newRoom.length) ? room : newRoom;
 	const roomState = {
-		state: { username, roomID, UID },
+		state: { username, roomID },
 	};
 
 	return (!newRoom.length || newRoom.length == 7)

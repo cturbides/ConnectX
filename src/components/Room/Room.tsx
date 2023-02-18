@@ -1,69 +1,55 @@
-import { createRtmClient, createChannel, channelLogin } from '../../helpers/AgoraClient';
-import { toggleMic, toggleVideo } from '../../helpers/VideoAndAudioStatesHandler';
-import { setMessageHandlers } from '../../helpers/RtmMessagesHandler';
-import { onlineHandler } from '../../helpers/RoomStateHandlers';
-import { Information } from './Information/Information';
-import { RtmClient, RtmChannel } from 'agora-rtm-sdk';
-import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
-import { UserProps } from './Users/User';
-import { Users } from './Users/Users';
+import { UsersFrame } from './UsersFrame';
+import React, { useState } from 'react';
+import { CallInfo } from './CallInfo';
 import SmallLogo from '../General/SmallLogo';
-import Toolbar from './Toolbar/Toolbar';
-import Chat from './Chat/Chat';
+import Toolbar from './Toolbar';
+import Chat from './Chat';
+
 
 const Room = (): JSX.Element => {
-	const { username, roomID, UID } = useLocation().state;
+	const { username, roomID } = useLocation().state;
+	// eslint-disable-next-line
+	const [users, setUsers] 			= useState<string[]>([username]); // Change user-type
+	// eslint-disable-next-line
+	const [messages, _setMessages] 		= useState<string[]>([]);
+	const [message, setMessage] 		= useState<string>('');
+	const [videoState, setVideoState] 	= useState<boolean>(false);
+	const [micState, setMicState] 		= useState<boolean>(false);
+	const [chatState, setChatState] 	= useState<boolean>(false);
+	// eslint-disable-next-line
+	const [online, setOnline] 			= useState<boolean>(false);
 
-	const [rtmClient] = useState<RtmClient>(createRtmClient());
-	const [channel] = useState<RtmChannel>(createChannel(rtmClient, roomID));
-	
-	const [online, setOnline] = useState<boolean>(false);
+	const toolbarStates = {
+		videoState,
+		micState,
+		chatState,
+		setVideoState,
+		setMicState,
+		setChatState
+	};
 
-	const [messages] = useState<string[]>([]);
-	const [message, setMessage] = useState<string>('');
-	const [chatVisibility, setChatVisibility] = useState<boolean>(false);
+	const chatStates = {
+		chatState,
+		messages,
+		message,
+		setChatState,
+		setMessage,
+	};
 
-	const [users, setUsers] = useState<UserProps[]>([
-		{ id: UID, name: username, isLocal: true, media: new MediaStream(), mic: false, video: false }
-	]);
-
-	useEffect(() => {
-		onlineHandler(rtmClient, setOnline);
-
-		rtmClient.login({ uid: UID })
-			.then(() => channelLogin(channel))
-			.then(() => setMessageHandlers(rtmClient, channel as RtmChannel, UID, username, setUsers));
-	}, []);
+	const callInfoStates = {
+		online,
+		roomID,
+		users: users.length
+	};
 
 	return (
 		<div className='min-h-screen h-screen w-screen flex bg-black'>
-			<SmallLogo original={false} applyToggle={true} />
-
-			<Users users={users} />
-
-			<Chat
-				chatState={chatVisibility}
-				messages={messages}
-				message={message}
-				setMessage={setMessage}
-				setChatState={setChatVisibility}
-			/>
-
-			<Toolbar
-				micState={users[0].mic}
-				videoState={users[0].video}
-				chatState={chatVisibility}
-				setChatState={setChatVisibility}
-				toggleMic={() => toggleMic(users, setUsers, channel)}
-				toggleVideo={() => toggleVideo(users, setUsers, channel)}
-			/>
-
-			<Information
-				online={online}
-				roomID={roomID}
-				users={users.length}
-			/>
+			<SmallLogo original={false} applyToggle={true} />	
+			<CallInfo {...callInfoStates} />
+			<UsersFrame users={users} />
+			<Chat {...chatStates}/>
+			<Toolbar {...toolbarStates} />
 		</div>
 	);
 };
