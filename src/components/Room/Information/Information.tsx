@@ -2,13 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
-export type CallInfoProps = {
+export type InformationProps = {
     roomID: string;
     users:  number;
 	online: boolean;
 };
 
-export const CallInfo = ({ roomID, users, online }: CallInfoProps): JSX.Element => {
+export const Information = ({ roomID, users, online }: InformationProps): JSX.Element => {
 	return (
 		<div className='fixed flex mt-11 right-[38px] md:bottom-0 md:left-0 md:ml-10 md:mb-10'>
 			<h4 className="text-main-white text-base justify-center items-center">
