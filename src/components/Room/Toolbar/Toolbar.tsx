@@ -9,9 +9,10 @@ interface Props {
 	setChatState: React.Dispatch<React.SetStateAction<boolean>>;
 	toggleMic: () => void;
 	toggleVideo: () => void;
+	leave: () => void;
 }
 
-const Toolbar = ({ micState, videoState, chatState, setChatState, toggleMic, toggleVideo }: Props): JSX.Element => {
+const Toolbar = ({ micState, videoState, chatState, setChatState, toggleMic, toggleVideo, leave }: Props): JSX.Element => {
 	return (
 		<div className='fixed flex w-screen justify-center items-end bottom-0 mb-9 z-50'>
 			<Button
@@ -41,7 +42,7 @@ const Toolbar = ({ micState, videoState, chatState, setChatState, toggleMic, tog
 				isActive={true}
 				activeColor={'text-main-red'}
 				unableColor={'text-main-white'}
-				procedure={() => console.log('')}
+				procedure={() => leave()}
 			/>
 
 			<div className={`absolute right-0 mr-10 invisible xl:visible ${(chatState) ? 'hidden' : ''}`}>
