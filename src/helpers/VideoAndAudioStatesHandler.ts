@@ -1,6 +1,17 @@
+import { UserProps } from '../components/Room/Users/User';
 import { RtmChannel } from 'agora-rtm-sdk';
 import React from 'react';
-import { UserProps } from '../components/Room/Users/User';
+
+
+export function setUserMedia(media: MediaStream, setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>) {
+	setUsers(users => {
+		const newUsers = [...users];
+
+		newUsers[0].media = media;
+
+		return newUsers;
+	});
+}
 
 export function toggleVideo(users: UserProps[], setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>, channel: RtmChannel) {
 	const user = users.at(0);
@@ -19,14 +30,8 @@ function setVideoOn(setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>,
 
 		media.getVideoTracks().forEach(track => track.enabled = true);
 
-		newUsers[0] = {
-			id: user?.id as string,
-			name: user?.name as string,
-			isLocal: true,
-			media: media,
-			mic: user?.mic as boolean,
-			video: true
-		};
+		newUsers[0].media = media;
+		newUsers[0].video = true;
 
 		const message = {
 			text: JSON.stringify({
@@ -50,14 +55,8 @@ function setVideoOff(setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>
 
 		media.getVideoTracks().forEach(track => track.enabled = false);
 
-		newUsers[0] = {
-			id: user?.id as string,
-			name: user?.name as string,
-			isLocal: true,
-			media: media,
-			mic: user?.mic as boolean,
-			video: false
-		};
+		newUsers[0].video = false;
+		newUsers[0].media = media;
 
 		const message = {
 			text: JSON.stringify({
@@ -89,14 +88,8 @@ function setMicOn(setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>, c
 
 		media.getAudioTracks().forEach(track => track.enabled = true);
 
-		newUsers[0] = {
-			id: user?.id as string,
-			name: user?.name as string,
-			isLocal: true,
-			media: media,
-			mic: true,
-			video: user?.video as boolean
-		};
+		newUsers[0].media = media;
+		newUsers[0].mic = true;
 
 		const message = {
 			text: JSON.stringify({
@@ -120,14 +113,8 @@ function setMicOff(setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>, 
 
 		media.getAudioTracks().forEach(track => track.enabled = false);
 
-		newUsers[0] = {
-			id: user?.id as string,
-			name: user?.name as string,
-			isLocal: true,
-			media: media,
-			mic: false,
-			video: user?.video as boolean
-		};
+		newUsers[0].media = media;
+		newUsers[0].mic = false;
 
 		const message = {
 			text: JSON.stringify({

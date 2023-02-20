@@ -27,6 +27,28 @@ export async function getDevices() {
 	return [mic, video];
 }
 
-export async function login(client: IAgoraRTCClient, roomID: string) {
-	await client.join(API_KEY, roomID, null);
+export async function mediaLogin(client: IAgoraRTCClient, roomID: string, UID: string) {
+	await client.join(API_KEY, roomID, null, UID);
+}
+
+export async function logout(rtmClient: RtmClient, channel: RtmChannel, mediaClient: IAgoraRTCClient, uid: string) {
+	await mediaLogout(mediaClient);
+	await rtmLogout(rtmClient, channel, uid);
+}
+
+async function rtmLogout(rtmClient: RtmClient, channel: RtmChannel, uid: string) {
+	const message = {
+		text: JSON.stringify({
+			type: 'Left',
+			uid
+		}),
+	};
+
+	await channel.sendMessage(message);
+	await channel.leave();
+	await rtmClient.logout();
+}
+
+async function mediaLogout(mediaClient: IAgoraRTCClient) {
+	await mediaClient.leave();
 }
