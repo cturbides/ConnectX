@@ -27,6 +27,6 @@ export async function getDevices() {
 	return [mic, video];
 }
 
-export async function login(client: IAgoraRTCClient, roomID: string) {
-	await client.join(API_KEY, roomID, null);
+export async function mediaLogin(client: IAgoraRTCClient, roomID: string, UID: string) {
+	await client.join(API_KEY, roomID, null, UID);
 }
