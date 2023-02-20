@@ -40,12 +40,12 @@ async function userUnpublished(mediaClient: IAgoraRTCClient, remoteUser: IAgoraR
 		const newUsers = [...users];
 		const index = newUsers.findIndex(user => user.id === remoteUser.uid);
 
-		if (mediaType === 'audio') {
+		if (mediaType === 'audio' && index && newUsers.find(user => user.id === remoteUser.uid)) {
 			newUsers[index].media.getAudioTracks().forEach(track => track.enabled = false);
 			newUsers[index].mic = false;
 		}
 
-		if (mediaType === 'video') {
+		if (mediaType === 'video' && index && newUsers.find(user => user.id === remoteUser.uid)) {
 			newUsers[index].media.getVideoTracks().forEach(track => track.enabled = false);
 			newUsers[index].video = false;
 		}
