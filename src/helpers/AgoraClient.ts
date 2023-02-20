@@ -32,8 +32,8 @@ export async function mediaLogin(client: IAgoraRTCClient, roomID: string, UID: s
 }
 
 export async function logout(rtmClient: RtmClient, channel: RtmChannel, mediaClient: IAgoraRTCClient, uid: string) {
-	await rtmLogout(rtmClient, channel, uid);
 	await mediaLogout(mediaClient);
+	await rtmLogout(rtmClient, channel, uid);
 }
 
 async function rtmLogout(rtmClient: RtmClient, channel: RtmChannel, uid: string) {
@@ -45,7 +45,6 @@ async function rtmLogout(rtmClient: RtmClient, channel: RtmChannel, uid: string)
 	};
 
 	await channel.sendMessage(message);
-
 	await channel.leave();
 	await rtmClient.logout();
 }

@@ -1,6 +1,6 @@
 {
   "name": "connect-x",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "homepage": "https://cturbides.github.io/ConnectX",
   "private": true,
   "dependencies": {
