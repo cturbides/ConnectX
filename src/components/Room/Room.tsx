@@ -15,6 +15,8 @@ import Toolbar from './Toolbar/Toolbar';
 import Chat from './Chat/Chat';
 
 
+import { Message, sendMessage } from '../../helpers/MessageHandlers';
+
 const Room = (): JSX.Element => {
 	const { username, roomID, UID } = useLocation().state;
 	const navigate = useNavigate();
@@ -25,8 +27,8 @@ const Room = (): JSX.Element => {
 
 	const [online, setOnline] = useState<boolean>(false);
 
-	const [messages] = useState<string[]>([]);
-	const [message, setMessage] = useState<string>('');
+	const [messages, setMessages] = useState<Message[]>([]);
+	const [message, setMessage] = useState<Message>({ username: username, content: '' });
 	const [chatVisibility, setChatVisibility] = useState<boolean>(false);
 
 	const [users, setUsers] = useState<UserProps[]>([
@@ -45,7 +47,7 @@ const Room = (): JSX.Element => {
 
 		rtmClient.login({ uid: UID })
 			.then(() => channelLogin(channel))
-			.then(() => setMessageHandlers(rtmClient, channel as RtmChannel, UID, username, setUsers))
+			.then(() => setMessageHandlers(rtmClient, channel as RtmChannel, UID, username, setUsers, setMessages))
 			.then(() => mediaLogin(mediaClient, roomID, UID))
 			.then(() => setMediaHandlers(mediaClient, setUsers))
 			.then(() => getDevices().then(tracks => {
@@ -86,11 +88,13 @@ const Room = (): JSX.Element => {
 			<Users users={users} />
 
 			<Chat
+				username={username}
 				chatState={chatVisibility}
 				messages={messages}
 				message={message}
 				setMessage={setMessage}
 				setChatState={setChatVisibility}
+				sendMessage={async () => await sendMessage(channel, message, setMessages)}
 			/>
 
 			<Toolbar
