@@ -1,11 +1,7 @@
 import React from 'react';
+import { Message } from '../../../helpers/MessageHandlers';
 
-type MessageProps = {
-    username: 'Me' | string;
-	content: string;
-};
-
-export const Message = ({ username, content}: MessageProps): JSX.Element => {
+export const MessageTile = ({ username, content}: Message): JSX.Element => {
 	const userCircle: JSX.Element = (
 		<div className='h-[40px] w-[40px] rounded-full border-main-white hover:border-main-violet focus:border-main-violet ease-in-out duration-300 border-[1px] text-center font-ramabhadra text-xl'>
 			<h4 className='mt-[4px]'>{username.charAt(0).toUpperCase()}</h4>
