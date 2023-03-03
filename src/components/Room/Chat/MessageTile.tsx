@@ -11,7 +11,7 @@ export const MessageTile = ({ username, content }: Message): JSX.Element => {
 	const isMe = username == 'Me';
 
 	return (
-		<div className='max-w-full mb-5 overflow-auto'>
+		<div className='max-w-full mb-5 overflow-auto break-all'>
 			<div className='text-main-white flex'>
 
 				<div id='nameLetter' className='mr-[11px]'>

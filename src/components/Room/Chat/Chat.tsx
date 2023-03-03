@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Message } from '../../../helpers/MessageHandlers';
+import React, { useRef, useEffect } from 'react';
 import { MessageInput } from './MessageInput';
 import { MessageTile } from './MessageTile';
-import { Message } from '../../../helpers/MessageHandlers';
-import React from 'react';
 
 interface ChatProps {
 	username: string;
@@ -16,6 +16,10 @@ interface ChatProps {
 }
 
 const Chat = ({ username, messages, message, chatState, setMessage, setChatState, sendMessage }: ChatProps): JSX.Element => {
+	const messagesRef = useRef<HTMLDivElement>(null);
+	
+	useEffect(() => { (chatState) ? messagesRef.current?.scrollTo(0, messagesRef.current.scrollHeight) : ''; }, [messages, chatState]);
+
 	return (
 		<div className={`h-screen transition-all duration-300 ${(!chatState) ? 'w-0' : 'w-1/2'}`}>
 			<div className='w-full h-full pr-[43px] flex items-center justify-end'>
@@ -31,7 +35,7 @@ const Chat = ({ username, messages, message, chatState, setMessage, setChatState
 						</div>
 
 						<div className='w-full px-10 pt-6 pb-[60px] flex-1 overflow-hidden' id="Messages">
-							<div className="h-full overflow-y-auto">
+							<div className="h-full overflow-y-auto no-scrollbar" ref={messagesRef}>
 								{messages.map((message, index) => <MessageTile username={(message.username === username) ? 'Me' : message.username} content={message.content} key={index} />)}
 							</div>
 						</div>
