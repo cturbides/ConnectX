@@ -13,8 +13,8 @@ export const MessageInput = ({ message, setMessage, sendMessage }: MessageInputP
 	const submit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		sendMessage()
-			.then(() => {
+		if (message.content) {
+			sendMessage().then(() => {
 				setMessage(message => {
 					return {
 						username: message.username,
@@ -22,6 +22,7 @@ export const MessageInput = ({ message, setMessage, sendMessage }: MessageInputP
 					} as Message;
 				});
 			});
+		}
 	};
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setMessage(message => {
