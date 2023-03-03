@@ -1,21 +1,19 @@
 import { createRtmClient, createChannel, createMediaClient, channelLogin, mediaLogin, getDevices, logout } from '../../helpers/AgoraClient';
 import { setUserMedia, toggleMic, toggleVideo } from '../../helpers/VideoAndAudioStatesHandler';
 import { IAgoraRTCClient, ICameraVideoTrack, IMicrophoneAudioTrack } from 'agora-rtc-sdk-ng';
-import { setMediaHandlers } from '../../helpers/RtcDataHandlers';
 import { setMessageHandlers } from '../../helpers/RtmMessagesHandler';
+import { Message, sendMessage } from '../../helpers/MessageHandlers';
+import { setMediaHandlers } from '../../helpers/RtcDataHandlers';
 import { onlineHandler } from '../../helpers/RoomStateHandlers';
+import { useLocation, useNavigate } from 'react-router';
 import { Information } from './Information/Information';
 import { RtmClient, RtmChannel } from 'agora-rtm-sdk';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
-import { UserProps } from './Users/User';
-import { Users } from './Users/Users';
 import SmallLogo from '../General/SmallLogo';
+import { UserProps } from './Users/User';
 import Toolbar from './Toolbar/Toolbar';
+import { Users } from './Users/Users';
 import Chat from './Chat/Chat';
-
-
-import { Message, sendMessage } from '../../helpers/MessageHandlers';
 
 const Room = (): JSX.Element => {
 	const { username, roomID, UID } = useLocation().state;
@@ -28,7 +26,7 @@ const Room = (): JSX.Element => {
 	const [online, setOnline] = useState<boolean>(false);
 
 	const [messages, setMessages] = useState<Message[]>([]);
-	const [message, setMessage] = useState<Message>({ username: username, content: '' });
+	const [message, setMessage] = useState<Message>({ username, content: '' });
 	const [chatVisibility, setChatVisibility] = useState<boolean>(false);
 
 	const [users, setUsers] = useState<UserProps[]>([
