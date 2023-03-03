@@ -26,9 +26,10 @@ export const User = ({ name, media, mic, video, isLocal }: UserProps): JSX.Eleme
 
 				<div className={`${(!video) ? 'w-0' : 'w-full h-full'}`}>
 					<video
-						className='w-full h-full z-1'
+						className='w-full h-full z-1 object-cover rounded-lg'
 						autoPlay={true}
 						ref={videoSrc}
+						controls={false}
 						muted={isLocal}
 					/>
 				</div>
