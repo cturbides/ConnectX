@@ -23,6 +23,9 @@ const Room = (): JSX.Element => {
 	const [rtmClient] = useState<RtmClient>(createRtmClient());
 	const [channel] = useState<RtmChannel>(createChannel(rtmClient, roomID));
 
+	const [micTrack, setMicTrack] = useState<IMicrophoneAudioTrack>();
+	const [videoTrack, setVideoTrack] = useState<ICameraVideoTrack>();
+
 	const [online, setOnline] = useState<boolean>(false);
 
 	const [messages, setMessages] = useState<Message[]>([]);
@@ -62,6 +65,9 @@ const Room = (): JSX.Element => {
 
 				setUserMedia(media, setUsers);
 
+				setMicTrack(micTrack);
+				setVideoTrack(videoTrack);
+
 				mediaClient.publish(tracks);
 			}));
 	});
@@ -69,7 +75,7 @@ const Room = (): JSX.Element => {
 	useEffect(() => {
 		const exit = (event: Event) => {
 			event.preventDefault();
-			(async () => await logout(rtmClient, channel, mediaClient, UID))();
+			(async () => await logout(rtmClient, channel, mediaClient, micTrack as IMicrophoneAudioTrack, videoTrack as ICameraVideoTrack, UID))();
 		};
 
 		window.addEventListener('unload', exit);
@@ -80,7 +86,7 @@ const Room = (): JSX.Element => {
 			<SmallLogo
 				original={false}
 				applyToggle={true}
-				exit={() => logout(rtmClient, channel, mediaClient, UID).then(() => navigate('/'))}
+				exit={() => logout(rtmClient, channel, mediaClient, micTrack as IMicrophoneAudioTrack, videoTrack as ICameraVideoTrack, UID).then(() => navigate('/'))}
 			/>
 
 			<Users users={users} />
@@ -102,7 +108,7 @@ const Room = (): JSX.Element => {
 				setChatState={setChatVisibility}
 				toggleMic={() => toggleMic(users, setUsers, channel)}
 				toggleVideo={() => toggleVideo(users, setUsers, channel)}
-				leave={() => logout(rtmClient, channel, mediaClient, UID).then(() => navigate('/'))}
+				leave={() => logout(rtmClient, channel, mediaClient, micTrack as IMicrophoneAudioTrack, videoTrack as ICameraVideoTrack, UID).then(() => navigate('/'))}
 			/>
 
 			<Information
