@@ -14,13 +14,11 @@ export const sendMessage = async (channel: RtmChannel, message: Message, setMess
 		})
 	};
 
-	console.log('Mensaje: ', message);
 	await channel.sendMessage(peerMessage);
 
 	setMessages(messages => [...messages, message]);
 };
 
 export const addMessage = (message: Message, setMessages: React.Dispatch<React.SetStateAction<Message[]>>) => {
-	console.log('Mensaje: ', message);
 	setMessages(messages => [...messages, message]);
 };
