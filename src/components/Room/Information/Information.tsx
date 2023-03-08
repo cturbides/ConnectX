@@ -10,7 +10,7 @@ export type InformationProps = {
 
 export const Information = ({ roomID, users, online }: InformationProps): JSX.Element => {
 	return (
-		<div className='fixed flex mt-11 right-[38px] md:bottom-0 md:left-0 md:ml-10 md:mb-10'>
+		<div className='fixed w-fit flex mt-11 right-[38px] md:bottom-0 md:left-0 md:ml-10 md:mb-10'>
 			<h4 className="text-main-white text-base justify-center items-center">
 				<span className='font-ramabhadra mr-2'>{roomID}</span>&nbsp;
 				<FontAwesomeIcon className={`w-1 ${(online) ? 'text-main-green' : 'text-main-red'}`} icon={faCircle} />&nbsp;
