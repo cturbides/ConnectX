@@ -11,6 +11,7 @@ import { RtmClient, RtmChannel } from 'agora-rtm-sdk';
 import React, { useState, useEffect } from 'react';
 import SmallLogo from '../General/SmallLogo';
 import { UserProps } from './Users/User';
+import AgoraRTC from 'agora-rtc-sdk-ng';
 import Toolbar from './Toolbar/Toolbar';
 import { Users } from './Users/Users';
 import Chat from './Chat/Chat';
@@ -44,6 +45,8 @@ const Room = (): JSX.Element => {
 	]);
 
 	useEffect(() => {
+		AgoraRTC.setLogLevel(4);
+
 		onlineHandler(rtmClient, setOnline);
 
 		rtmClient.login({ uid: UID })
@@ -70,7 +73,7 @@ const Room = (): JSX.Element => {
 
 				mediaClient.publish(tracks);
 			}));
-	});
+	}, []);
 
 	useEffect(() => {
 		const exit = (event: Event) => {
