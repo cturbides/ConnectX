@@ -45,7 +45,7 @@ const Toolbar = ({ micState, videoState, chatState, setChatState, toggleMic, tog
 				procedure={() => leave()}
 			/>
 
-			<div className={`absolute right-0 mr-10 invisible xl:visible ${chatState ? 'w-0' : 'w-fit'}`}>
+			<div className={`absolute right-0 mr-10 invisible md:visible ${chatState ? 'w-0' : 'w-fit'}`}>
 				<div className={`transition-all duration-300 ${(chatState) ? 'translate-x-[20vw]' : 'translate-x-0'}`}>
 					<Button
 						key={'Comment'}

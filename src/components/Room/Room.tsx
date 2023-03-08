@@ -123,6 +123,7 @@ const Room = (): JSX.Element => {
 				online={online}
 				roomID={roomID}
 				users={users.length}
+				action={() => setChatVisibility(!chatVisibility)}
 			/>
 		</div>
 	);
