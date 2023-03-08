@@ -1,6 +1,8 @@
 import { IAgoraRTCClient, IAgoraRTCRemoteUser } from 'agora-rtc-sdk-ng';
 import { UserProps } from '../components/Room/Users/User';
+import { RtmChannel } from 'agora-rtm-sdk';
 import React from 'react';
+
 
 export function setMediaHandlers(mediaClient: IAgoraRTCClient, setUsers: React.Dispatch<React.SetStateAction<UserProps[]>>) {
 	mediaClient.on('user-left', user => userLeft(user, setUsers));
@@ -52,4 +54,26 @@ async function userUnpublished(mediaClient: IAgoraRTCClient, remoteUser: IAgoraR
 
 		return newUsers;
 	});
+}
+
+export function sendMicState(channel: RtmChannel, user: UserProps) {
+	const message = {
+		text: JSON.stringify({
+			type: (user.mic) ? 'UnMuteMyMic' : 'MuteMyMic',
+			uid: user?.id as string
+		}),
+	};
+
+	channel.sendMessage(message);
+}
+
+export function sendVideoState(channel: RtmChannel, user: UserProps) {
+	const message = {
+		text: JSON.stringify({
+			type: (user.video) ? 'UnMuteMyVideo' : 'MuteMyVideo',
+			uid: user?.id as string
+		}),
+	};
+
+	channel.sendMessage(message);
 }

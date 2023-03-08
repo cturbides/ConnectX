@@ -1,5 +1,5 @@
 import AgoraRtm, { RtmClient, RtmChannel } from 'agora-rtm-sdk';
-import AgoraRTC, { IAgoraRTCClient } from 'agora-rtc-sdk-ng';
+import AgoraRTC, { IAgoraRTCClient, ICameraVideoTrack, IMicrophoneAudioTrack } from 'agora-rtc-sdk-ng';
 
 const API_KEY = process.env.REACT_APP_API_KEY as string;
 
@@ -31,8 +31,8 @@ export async function mediaLogin(client: IAgoraRTCClient, roomID: string, UID: s
 	await client.join(API_KEY, roomID, null, UID);
 }
 
-export async function logout(rtmClient: RtmClient, channel: RtmChannel, mediaClient: IAgoraRTCClient, uid: string) {
-	await mediaLogout(mediaClient);
+export async function logout(rtmClient: RtmClient, channel: RtmChannel, mediaClient: IAgoraRTCClient, micTrack: IMicrophoneAudioTrack, videoTrack: ICameraVideoTrack, uid: string) {
+	await mediaLogout(mediaClient, micTrack, videoTrack);
 	await rtmLogout(rtmClient, channel, uid);
 }
 
@@ -49,6 +49,9 @@ async function rtmLogout(rtmClient: RtmClient, channel: RtmChannel, uid: string)
 	await rtmClient.logout();
 }
 
-async function mediaLogout(mediaClient: IAgoraRTCClient) {
+async function mediaLogout(mediaClient: IAgoraRTCClient, micTrack: IMicrophoneAudioTrack, videoTrack: ICameraVideoTrack) {
 	await mediaClient.leave();
+
+	micTrack.close();
+	videoTrack.close();
 }

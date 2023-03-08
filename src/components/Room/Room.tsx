@@ -1,9 +1,9 @@
 import { createRtmClient, createChannel, createMediaClient, channelLogin, mediaLogin, getDevices, logout } from '../../helpers/AgoraClient';
 import { setUserMedia, toggleMic, toggleVideo } from '../../helpers/VideoAndAudioStatesHandler';
+import { setMediaHandlers, sendMicState, sendVideoState } from '../../helpers/RtcDataHandlers';
 import { IAgoraRTCClient, ICameraVideoTrack, IMicrophoneAudioTrack } from 'agora-rtc-sdk-ng';
 import { setMessageHandlers } from '../../helpers/RtmMessagesHandler';
 import { Message, sendMessage } from '../../helpers/MessageHandlers';
-import { setMediaHandlers } from '../../helpers/RtcDataHandlers';
 import { onlineHandler } from '../../helpers/RoomStateHandlers';
 import { useLocation, useNavigate } from 'react-router';
 import { Information } from './Information/Information';
@@ -11,6 +11,7 @@ import { RtmClient, RtmChannel } from 'agora-rtm-sdk';
 import React, { useState, useEffect } from 'react';
 import SmallLogo from '../General/SmallLogo';
 import { UserProps } from './Users/User';
+import AgoraRTC from 'agora-rtc-sdk-ng';
 import Toolbar from './Toolbar/Toolbar';
 import { Users } from './Users/Users';
 import Chat from './Chat/Chat';
@@ -22,6 +23,9 @@ const Room = (): JSX.Element => {
 	const [mediaClient] = useState<IAgoraRTCClient>(createMediaClient());
 	const [rtmClient] = useState<RtmClient>(createRtmClient());
 	const [channel] = useState<RtmChannel>(createChannel(rtmClient, roomID));
+
+	const [micTrack, setMicTrack] = useState<IMicrophoneAudioTrack>();
+	const [videoTrack, setVideoTrack] = useState<ICameraVideoTrack>();
 
 	const [online, setOnline] = useState<boolean>(false);
 
@@ -41,6 +45,8 @@ const Room = (): JSX.Element => {
 	]);
 
 	useEffect(() => {
+		AgoraRTC.setLogLevel(4);
+
 		onlineHandler(rtmClient, setOnline);
 
 		rtmClient.login({ uid: UID })
@@ -62,25 +68,33 @@ const Room = (): JSX.Element => {
 
 				setUserMedia(media, setUsers);
 
+				setMicTrack(micTrack);
+				setVideoTrack(videoTrack);
+
 				mediaClient.publish(tracks);
 			}));
-	});
+	}, []);
 
 	useEffect(() => {
 		const exit = (event: Event) => {
 			event.preventDefault();
-			(async () => await logout(rtmClient, channel, mediaClient, UID))();
+			(async () => await logout(rtmClient, channel, mediaClient, micTrack as IMicrophoneAudioTrack, videoTrack as ICameraVideoTrack, UID))();
 		};
 
 		window.addEventListener('unload', exit);
 	});
+
+	useEffect(() => {
+		sendMicState(channel, users.at(0) as UserProps);
+		sendVideoState(channel, users.at(0) as UserProps);
+	}, [users.length]);
 
 	return (
 		<div className='min-h-screen h-screen w-screen flex bg-black'>
 			<SmallLogo
 				original={false}
 				applyToggle={true}
-				exit={() => logout(rtmClient, channel, mediaClient, UID).then(() => navigate('/'))}
+				exit={() => logout(rtmClient, channel, mediaClient, micTrack as IMicrophoneAudioTrack, videoTrack as ICameraVideoTrack, UID).then(() => navigate('/'))}
 			/>
 
 			<Users users={users} />
@@ -102,13 +116,14 @@ const Room = (): JSX.Element => {
 				setChatState={setChatVisibility}
 				toggleMic={() => toggleMic(users, setUsers, channel)}
 				toggleVideo={() => toggleVideo(users, setUsers, channel)}
-				leave={() => logout(rtmClient, channel, mediaClient, UID).then(() => navigate('/'))}
+				leave={() => logout(rtmClient, channel, mediaClient, micTrack as IMicrophoneAudioTrack, videoTrack as ICameraVideoTrack, UID).then(() => navigate('/'))}
 			/>
 
 			<Information
 				online={online}
 				roomID={roomID}
 				users={users.length}
+				action={() => setChatVisibility(!chatVisibility)}
 			/>
 		</div>
 	);

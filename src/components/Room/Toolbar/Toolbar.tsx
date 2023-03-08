@@ -14,7 +14,7 @@ interface Props {
 
 const Toolbar = ({ micState, videoState, chatState, setChatState, toggleMic, toggleVideo, leave }: Props): JSX.Element => {
 	return (
-		<div className='fixed flex w-screen justify-center items-end bottom-0 mb-9 z-50'>
+		<div className='fixed flex w-screen justify-center items-end bottom-0 mb-9 z-0'>
 			<Button
 				key={'Mic'}
 				active={faMicrophone}
@@ -45,16 +45,18 @@ const Toolbar = ({ micState, videoState, chatState, setChatState, toggleMic, tog
 				procedure={() => leave()}
 			/>
 
-			<div className={`absolute right-0 mr-10 invisible xl:visible ${(chatState) ? 'hidden' : ''}`}>
-				<Button
-					key={'Comment'}
-					active={faComment}
-					unable={faComment}
-					isActive={chatState}
-					activeColor={'text-main-violet'}
-					unableColor={'text-main-white'}
-					procedure={() => setChatState(!chatState)}
-				/>
+			<div className={`absolute right-0 mr-10 invisible md:visible ${chatState ? 'w-0' : 'w-fit'}`}>
+				<div className={`transition-all duration-300 ${(chatState) ? 'translate-x-[20vw]' : 'translate-x-0'}`}>
+					<Button
+						key={'Comment'}
+						active={faComment}
+						unable={faComment}
+						isActive={chatState}
+						activeColor={'text-main-violet'}
+						unableColor={'text-main-white'}
+						procedure={() => setChatState(!chatState)}
+					/>
+				</div>
 			</div>
 		</div>
 	);

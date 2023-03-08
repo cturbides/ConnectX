@@ -21,8 +21,8 @@ const Chat = ({ username, messages, message, chatState, setMessage, setChatState
 	useEffect(() => { (chatState) ? messagesRef.current?.scrollTo(0, messagesRef.current.scrollHeight) : ''; }, [messages, chatState]);
 
 	return (
-		<div className={`h-screen transition-all duration-300 ${(!chatState) ? 'w-0' : 'w-1/2'}`}>
-			<div className='w-full h-full pr-[43px] flex items-center justify-end'>
+		<div className={`h-screen transition-all duration-300 z-50 flex items-center justify-center md:block ${(!chatState) ? 'w-0' : 'fixed bg-black w-screen lg:relative lg:w-1/2'}`}>
+			<div className='w-full h-full md:pr-[43px] flex items-center justify-center lg:justify-end'>
 				<div className={`relative h-5/6 min-h-[200px] max-w-[350px] w-5/6 xl:w-full border-main-white border-[1px] rounded-[15px] transition-all duration-300 ${(chatState) ? 'translate-x-0' : 'translate-x-[100vw]'}`}>
 
 					<div className='flex flex-col h-full'>
