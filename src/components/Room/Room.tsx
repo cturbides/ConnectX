@@ -1,9 +1,9 @@
 import { createRtmClient, createChannel, createMediaClient, channelLogin, mediaLogin, getDevices, logout } from '../../helpers/AgoraClient';
 import { setUserMedia, toggleMic, toggleVideo } from '../../helpers/VideoAndAudioStatesHandler';
+import { setMediaHandlers, sendMicState, sendVideoState } from '../../helpers/RtcDataHandlers';
 import { IAgoraRTCClient, ICameraVideoTrack, IMicrophoneAudioTrack } from 'agora-rtc-sdk-ng';
 import { setMessageHandlers } from '../../helpers/RtmMessagesHandler';
 import { Message, sendMessage } from '../../helpers/MessageHandlers';
-import { setMediaHandlers } from '../../helpers/RtcDataHandlers';
 import { onlineHandler } from '../../helpers/RoomStateHandlers';
 import { useLocation, useNavigate } from 'react-router';
 import { Information } from './Information/Information';
@@ -80,6 +80,11 @@ const Room = (): JSX.Element => {
 
 		window.addEventListener('unload', exit);
 	});
+
+	useEffect(() => {
+		sendMicState(channel, users.at(0) as UserProps);
+		sendVideoState(channel, users.at(0) as UserProps);
+	}, [users.length]);
 
 	return (
 		<div className='min-h-screen h-screen w-screen flex bg-black'>
