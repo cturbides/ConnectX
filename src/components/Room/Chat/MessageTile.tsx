@@ -22,7 +22,7 @@ export const MessageTile = ({ username, content }: Message): JSX.Element => {
 					<div id='author' className='text-md font-bold font-ramabhadra'>
 						<h2 className={`pr-[25px] ${isMe ? 'text-right' : 'text-left'}`}>{username}</h2>
 					</div>
-					<div id='content' className={`text-sm pr-[25px] ${isMe ? 'text-right' : 'text-left'}`}>
+					<div id='content' className={`text-sm pr-[10px] md:pr-[25px] ${isMe ? 'text-right' : 'text-left'}`}>
 						<p>{content}</p>
 					</div>
 				</div>
