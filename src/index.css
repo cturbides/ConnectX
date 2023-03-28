@@ -19,3 +19,22 @@
 	scrollbar-width: none;
 	/* Firefox */
 }
+
+.userFrame-enter {
+	opacity: 0;
+}
+
+.userFrame-enter-active {
+	opacity: 1;
+	transition: opacity 500ms ease-in-out;
+
+}
+
+.userFrame-exit {
+	opacity: 1;
+}
+
+.userFrame-exit-active {
+	opacity: 0;
+	transition: opacity 500ms ease-out;
+}
