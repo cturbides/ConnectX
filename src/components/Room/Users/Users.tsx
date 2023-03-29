@@ -28,7 +28,7 @@ export const Users = ({ users }: UsersProps): JSX.Element => {
 
 	return (
 
-		<TransitionGroup element="div" className={"text-main-white w-screen h-full transition-all duration-300 md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden"}>
+		<TransitionGroup element="div" className={'text-main-white w-screen h-full transition-all duration-300 md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden'}>
 			{usersToShow.map((user, index) =>
 				<CSSTransition key={index} timeout={700} classNames="userFrame">
 					<User
