@@ -1,6 +1,7 @@
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
-import { User } from './User';
 import { UserProps } from './User';
+import { User } from './User';
 import React from 'react';
 
 export type UsersProps = {
@@ -26,18 +27,22 @@ export const Users = ({ users }: UsersProps): JSX.Element => {
 	}, [users, usersToShow]);
 
 	return (
-		<div className='text-main-white w-screen h-full transition-all duration-300 md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden'>
-			{usersToShow.map((user, index) => 
-				<User 
-					key={index} 
-					id={user.id}
-					name={user.name}
-					media={user.media}
-					mic={user.mic}
-					video={user.video}
-					isLocal={user.isLocal}
-				/>
+
+		<TransitionGroup element="div" className={'text-main-white w-screen h-full transition-all duration-300 md:h-2/3 max-h-[700px] my-auto mx-5 flex flex-wrap flex-col md:flex-row justify-center items-center gap-5 overflow-hidden'}>
+			{usersToShow.map((user, index) =>
+				<CSSTransition key={index} timeout={700} classNames="userFrame">
+					<User
+						key={index}
+						id={user.id}
+						name={user.name}
+						media={user.media}
+						mic={user.mic}
+						video={user.video}
+						isLocal={user.isLocal}
+					/>
+				</CSSTransition>
 			)}
-		</div>
+		</TransitionGroup>
+
 	);
 };
