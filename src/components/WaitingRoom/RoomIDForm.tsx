@@ -21,7 +21,7 @@ const RoomIDForm = ({
 	useEffect(() => setRoom(generateRandomRoomID()), []);
 
 	return (
-		<div className='h-screen flex items-center justify-center flex-col'>
+		<div className='h-screen flex items-center justify-center flex-col px-10'>
 			<Title step="roomID" />
 			<form onSubmit={(event) => submit(event, room, user, newRoom, navigate)}>
 				<input 
