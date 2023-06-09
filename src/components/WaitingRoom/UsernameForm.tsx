@@ -11,7 +11,7 @@ export type UsernameFormProps = {
 
 export const UsernameForm = ({user, setStep, setUser}: UsernameFormProps): JSX.Element => {
 	return (
-		<div className='h-screen min-h-screen flex items-center justify-center flex-col'>
+		<div className='h-screen min-h-screen flex items-center justify-center flex-col px-10'>
 			<Title step='username' />
 			<form onSubmit={(event) => submit(event, setStep, user)}>
 				<input
