@@ -1,6 +1,5 @@
 import Form from './Form';
 import React from 'react';
-import Footer from '../General/Footer';
 import SmallLogo from '../General/SmallLogo';
 import { useNavigate } from 'react-router';
 
@@ -18,7 +17,6 @@ const WaitingRoom = (): JSX.Element => {
 			/>
 
 			<Form />
-			<Footer />
 		</div>
 	);
 };

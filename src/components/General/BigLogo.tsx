@@ -4,7 +4,7 @@ import React from 'react';
 
 const BigLogo = (props: { original: boolean }): JSX.Element => {
 	return (
-		<div className='w-7/12 md:w-5/12 md:ml-[10%]'>
+		<div className='w-3/12 md:w-4/12 max-w-lg min-w-[200px]'>
 			<img src={(props.original) ? main : white} alt="ConnectX Logo" />
 		</div>
 	);
